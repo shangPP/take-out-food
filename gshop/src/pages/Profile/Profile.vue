@@ -2,7 +2,7 @@
   <section class="profile">
     <HeaderTop title="我的"/>
     <section class="profile-number">
-      <router-link to="userInfo._id ? '/userinfo' : '/login'" class="profile-link">
+      <router-link :to="userInfo._id ? '/userinfo' : '/login'" class="profile-link">
         <div class="profile_image">
           <i class="iconfont icon-person"></i>
         </div>
@@ -10,7 +10,7 @@
           <p class="user-info-top" v-if="!userInfo.phone">{{userInfo.name || '登陆/注册'}}</p>
           <p>
             <span class="user-icon">
-              <i class="iconfont icon-shouji icon-mobile"></i>
+              <i class="iconfont icon-mobile"></i>
             </span>
             <span class="icon-mobile-number">{{userInfo.phone || '暂无绑定手机号'}}</span>
           </p>
@@ -19,9 +19,6 @@
           <i class="iconfont icon-jiantou1"></i>
         </span>
       </router-link>
-      <a href="javascript:" >
-
-      </a>
     </section>
     <section class="profile_info_data border-1px">
       <ul class="info_data_list">
@@ -108,7 +105,7 @@ export default {
   },
   methods: {
     logout () {
-      MessageBox.confirm('确认推出吗？').then(
+      MessageBox.confirm('确认退出吗？').then(
         action => {
           // 请求退出
           this.$store.dispatch('logout')
@@ -131,6 +128,7 @@ export default {
   .profile //我的
     width 100%
     overflow hidden
+    background: #f1f1f1
     .header
       background-color #02a774
       position fixed

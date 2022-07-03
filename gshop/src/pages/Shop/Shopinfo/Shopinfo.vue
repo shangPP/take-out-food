@@ -33,8 +33,8 @@
 
       <section class="section">
         <h3 class="section-title">商家实景</h3>
-        <div class="pic-wrapper" ref="picSUl">
-          <ul class="pic-list">
+        <div class="pic-wrapper" >
+          <ul class="pic-list" ref="picSUl">
             <li class="pic-item" v-for="(pic, index) in info.pics" :key="index">
               <img
                 width="120"

@@ -4,13 +4,13 @@
       <li class="shop_li border-1px" v-for="(shop, index) in shops" :key="index" @click="$router.push('/shop')">
         <a>
           <div class="shop_left">
-            <img class="shop_img" src="baseImgUrl + shop.image.path">
+            <img class="shop_img" :src="baseImgUrl + shop.image_path">
           </div>
           <div class="shop_right">
             <section class="shop_detail_header">
               <h4 class="shop_title ellipsis">{{shop.name}}</h4>
               <ul class="shop_detail_ul">
-                <li class="supports" v-for="(support, index) in shop.supports" :key=index>{{support.icon_name}}</li>
+                <li class="supports" v-for="(support, index) in shop.supports" :key="index">{{support.icon_name}}</li>
               </ul>
             </section>
             <section class="shop_rating_order">
@@ -53,7 +53,7 @@ export default {
   name: 'ShopList',
   data () {
     return {
-      baseImgUrl: 'http://cangdu.org:8001/img/'
+      baseImgUrl: 'http://elm.cangdu.org/img/'
     }
   },
   computed: {

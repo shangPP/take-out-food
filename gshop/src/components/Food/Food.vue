@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import CartControl from '../CartControl/CartControl'
+import CartControl from '../CartControl/CartControl.vue'
 export default {
   name: 'Food',
   props: {

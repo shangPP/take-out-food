@@ -9,7 +9,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'HeaderTop',
   props: {
@@ -27,16 +26,6 @@ export default {
     top 0
     width 100%
     height 45px
-    .header_search
-      position absolute
-      left 15px
-      top 50%
-      transform translateY(-50%)
-      width 10%
-      height 50%
-      .icon-sousuo
-        font-size 25px
-        color #fff
     .header_title
       position absolute
       top 50%

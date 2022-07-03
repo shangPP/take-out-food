@@ -17,6 +17,7 @@ export default {
   },
   computed: {
     /*
+          星 半星 空白星
     * 3.2: 3+0+2
     * 3.5: 3+1+1
     * */
@@ -45,6 +46,7 @@ export default {
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import '../../common/stylus/mixins.styl'
+
   .star //2x图 3x图
     float left
     font-size 0
@@ -71,26 +73,26 @@ export default {
         height 15px
         margin-right 6px
         background-size 15px 15px
-      &:last-child
-        margin-right 0
-      &.on
-        bg-image('./images/star36_on')
-      &.half
-        bg-image('./images/star36_half')
-      &.off
-        bg-image('./images/star36_off')
+        &:last-child
+          margin-right 0
+        &.on
+          bg-image('./images/star36_on')
+        &.half
+          bg-image('./images/star36_half')
+        &.off
+          bg-image('./images/star36_off')
     &.star-24
       .star-item
         width 10px
         height 10px
         margin-right 3px
         background-size 10px 10px
-      &:last-child
-        margin-right 0
-      &.on
-        bg-image('./images/star24_on')
-      &.half
-        bg-image('./images/star24_half')
-      &.off
-        bg-image('./images/star24_off')
+        &:last-child
+          margin-right 0
+        &.on
+          bg-image('./images/star24_on')
+        &.half
+          bg-image('./images/star24_half')
+        &.off
+          bg-image('./images/star24_off')
 </style>

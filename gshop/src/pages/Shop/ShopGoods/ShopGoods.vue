@@ -17,10 +17,10 @@
 
       <div class="foods-wrapper">
         <ul ref="foodsUl">
-          <li class="food-list-hook" v-for="(good, index) in goods" :key="index" @click="showFood(food)">
+          <li class="food-list-hook" v-for="(good, index) in goods" :key="index" >
             <h1 class="title">{{good.name}}</h1>
             <ul>
-              <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods" :key="index">
+              <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods" :key="index" @click="showFood(food)">
                 <div class="icon">
                   <img width="57" height="57" :src="food.icon"/>
                 </div>
@@ -53,9 +53,9 @@
 <script>
 import BScroll from '@better-scroll/core'
 import { mapState } from 'vuex'
-import CartControl from '../../../components/CartControl/CartControl'
-import Food from '../../../components/Food/Food'
-import ShopCart from '../../../components/ShopCart/ShopCart'
+import CartControl from '../../../components/CartControl/CartControl.vue'
+import Food from '../../../components/Food/Food.vue'
+import ShopCart from '../../../components/ShopCart/ShopCart.vue'
 
 export default {
   name: 'ShopGoods',
@@ -67,7 +67,8 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('getShopGoods', () => {
+    // 使用 axios 请求 mockjs 提供的接
+    this.$store.dispatch('getShopGoods', () => { // goods 更新了, 界面还没有更新
       // 数据更新后执行
       this.$nextTick(() => { // 列表数据更新显示后执行
         this._initScroll()
@@ -94,21 +95,25 @@ export default {
     // 初始化滚动
     _initScroll () {
       // 列表显示之后创建
+      // 左侧分类列表
       // eslint-disable-next-line no-new
       new BScroll('.menu-wrapper', {
-        click: true
+        click: true // 响应点击
       })
+      // 右侧food列表
       this.foodsScroll = new BScroll('.foods-wrapper', {
-        probeType: 2, // 因为惯性滑动不会触发
+        probeType: 2, // 手指滑动(惯性滑动和编码滑动不监视) 因为惯性滑动不会触发
         click: true
       })
 
       // 给右侧列表绑定scroll监听
       this.foodsScroll.on('scroll', ({ x, y }) => {
+        // console.log(x,y);
         this.scrollY = Math.abs(y)
       })
       // 给右侧列表绑定scroll结束的监听
       this.foodsScroll.on('scrollEnd', ({ x, y }) => {
+        // console.log('scrollEnd',x,y);
         this.scrollY = Math.abs(y)
       })
     },
@@ -137,7 +142,7 @@ export default {
       // 平滑滑动右侧列表
       this.foodsScroll.scrollTo(0, -scrollY, 300)
     },
-    // 显示点击的fodd
+    // 显示点击的food
     showFood (food) {
       // 设置food
       this.food = food

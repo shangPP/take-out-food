@@ -1,10 +1,10 @@
 <template>
   <div class="cartcontrol">
     <transition name="move">
-      <div class="iconfont icon-remove_circle_outline" v-if="food.count" @click.stop="updateFoodCount(false)"></div>
+      <div class="iconfont icon-remove-circle-outline" v-show="food.count" @click.stop="updateFoodCount(false)"></div>
     </transition>
-    <div class="cart-count" v-if="food.count">{{food.count}}</div>
-    <div class="iconfont icon-add_circle" @click.stop="updateFoodCount(true)"></div>
+    <div class="cart-count" v-show="food.count">{{food.count}}</div>
+    <div class="iconfont icon-add-circle" @click.stop="updateFoodCount(true)"></div>
   </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
   },
   methods: {
     updateFoodCount (isAdd) {
+      // 通知 action 更新
       this.$store.dispatch('updateFoodCount', { isAdd, food: this.food })
     }
   }
@@ -34,7 +35,7 @@ export default {
       font-size: 24px
       color: rgb(0, 160, 220)
 
-    .icon-remove_circle_outline
+    .icon-remove-circle-outline
       display: inline-block
       padding 6px
       line-height 24px
@@ -54,7 +55,7 @@ export default {
       text-align: center
       font-size: 10px
       color: rgb(147, 153, 159)
-    .icon-add_circle
+    .icon-add-circle
       display: inline-block
       padding: 6px
       line-height: 24px

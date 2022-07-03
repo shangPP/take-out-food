@@ -10,17 +10,18 @@ import VueRouter from 'vue-router'
 // import Order from '../pages/Order/Order'
 // import Profile from '../pages/Profile/Profile'
 
+import Login from '../pages/Login/Login.vue'
+import Shop from '../pages/Shop/Shop.vue'
+import ShopGoods from '../pages/Shop/ShopGoods/ShopGoods.vue'
+import ShopRatings from '../pages/Shop/ShopRatings/ShopRatings.vue'
+import ShopInfo from '../pages/Shop/Shopinfo/Shopinfo.vue'
+
 // 路由懒加载
 const MSite = () => import('../pages/MSite/MSite.vue')
 const Search = () => import('../pages/Search/Search.vue')
 const Order = () => import('../pages/Order/Order.vue')
 const Profile = () => import('../pages/Profile/Profile.vue')
-
-import Login from '../pages/Login/Login'
-import Shop from '../pages/Shop/Shop'
-import ShopGoods from '../pages/Shop/ShopGoods/ShopGoods'
-import ShopRatings from '../pages/Shop/ShopRatings/ShopRatings'
-import ShopInfo from '../pages/Shop/Shopinfo/Shopinfo'
+const Pay = () => import('../pages/Pay/Pay.vue')
 
 // 声明使用插件
 Vue.use(VueRouter)
@@ -31,28 +32,28 @@ export default new VueRouter({
     {
       path: '/msite',
       component: MSite, // 返回路由组件的函数，只有执行此函数才会加载路由组件，这个函数在请求对应的路由路径时才会执行
-      mata: {
+      meta: {
         showFooter: true
       }
     },
     {
       path: '/search',
       component: Search,
-      mata: {
+      meta: {
         showFooter: true
       }
     },
     {
       path: '/order',
       component: Order,
-      mata: {
+      meta: {
         showFooter: true
       }
     },
     {
       path: '/profile',
       component: Profile,
-      mata: {
+      meta: {
         showFooter: true
       }
     },
@@ -83,8 +84,12 @@ export default new VueRouter({
         {
           path: '',
           redirect: '/shop/goods'
-        }
+        },
       ]
+    },
+    {
+      path: "/pay",
+      component: Pay
     }
   ]
 })

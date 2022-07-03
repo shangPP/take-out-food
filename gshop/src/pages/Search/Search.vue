@@ -5,6 +5,7 @@
       <input type="search" placeholder="请输入商家名称" class="search_input" v-model="keyword"/>
       <input type="submit" class="search_submit"/>
     </form>
+
     <section class="list" v-if="!noSearchShops">
       <ul class="list_container">
 <!--      或者  :to="'/shop?id='+item.id"-->
@@ -37,7 +38,7 @@ export default {
   data () {
     return {
       keyword: '',
-      imgBaseUrl: 'http://cangdu.org:8001/img/',
+      imgBaseUrl: 'http://elm.cangdu.org/img/',
       noSearchShops: false
     }
   },
@@ -55,7 +56,7 @@ export default {
     }
   },
   watch: {
-    SearchShops (value) {
+    searchShops (value) {
       if (!value.length) { // 没有数据
         this.noSearchShops = true
       } else { // 有数据

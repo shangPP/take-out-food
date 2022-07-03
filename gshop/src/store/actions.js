@@ -31,11 +31,12 @@ export default {
   // 异步获取地址
   async getAddress ({ commit, state }) {
     // 发送异步ajax请求
-    const geohash = state.latitude + state.longitude
+    const geohash = state.latitude + ',' + state.longitude
     const result = await reqAddress(geohash)
     // 提交一个mutation
     if (result.code === 0) {
-      const address = result.date
+      const address = result.data
+      // commit 方法触发状态变更，同步操作
       commit(RECEIVE_ADDRESS, { address })
     }
   },
@@ -45,7 +46,7 @@ export default {
     const result = await reqFoodCategorys()
     // 提交一个mutation
     if (result.code === 0) {
-      const categorys = result.date
+      const categorys = result.data
       commit(RECEIVE_CATEGORYS, { categorys })
     }
   },
@@ -56,7 +57,7 @@ export default {
     const result = await reqShops(longitude, latitude)
     // 提交一个mutation
     if (result.code === 0) {
-      const shops = result.date
+      const shops = result.data
       commit(RECEIVE_SHOPS, { shops })
     }
   },
@@ -87,7 +88,6 @@ export default {
     const result = await reqShopInfo()
     if (result.code === 0) {
       const info = result.data
-      info.score = 3.5
       commit(RECEIVE_INFO, { info })
     }
   },

@@ -13,7 +13,9 @@ export default {
 
   mounted () {
     // this.$store.dispatch('getAddress')
+    // 异步获取address
     this.getAddress()
+    // 异步获取登录用户信息
     this.getUserInfo()
   },
   methods: {

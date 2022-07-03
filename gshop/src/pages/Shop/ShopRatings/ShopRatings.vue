@@ -5,7 +5,7 @@
         <div class="overview-left">
           <h1 class="score">{{info.score}}</h1>
           <div class="title">综合评分</div>
-          <div class="rank">高于周边商家 99%</div>
+          <div class="rank">高于周边商家{{info.rankRate}}%</div>
         </div>
         <div class="overview-right">
           <div class="score-wrapper">
@@ -39,7 +39,7 @@
           </span>
         </div>
         <div class="switch" :class="{on:onlyShowText}" @click="toggleOnlyShowText">
-          <span class="iconfont icon-check_circle"></span>
+          <span class="iconfont icon-check-circle"></span>
           <span class="text">只看有内容的评价</span>
         </div>
       </div>
@@ -59,10 +59,10 @@
               <p class="text">{{rating.text}}</p>
               <div class="recommend">
                 <span class="iconfont" :class="rating.rateType ===0? 'icon-thumb_up':'icon-thumb_down'"></span>
-                <span class="item" v-for="(itom, index) in rating.recommend" :key="index">{{itom}}</span>
+                <span class="item" v-for="(item, index) in rating.recommend" :key="index">{{item}}</span>
               </div>
-<!--              <div class="time">{{ rating.rateTime | date-format}}</div>-->
-              <div class="time">{{rating.rateTime | dateFormat}}</div>
+             <div class="time">{{ rating.rateTime | date-format}}</div>
+              <!-- <div class="time">{{rating.rateTime | dateFormat}}</div> -->
             </div>
           </li>
         </ul>
@@ -74,7 +74,7 @@
 <script>
 import BScroll from '@better-scroll/core'
 import { mapState, mapGetters } from 'vuex'
-import Star from '../../../components/Star/Star'
+import Star from '../../../components/Star/Star.vue'
 export default {
   name: 'ShopRatings',
   data () {
@@ -215,7 +215,7 @@ export default {
         padding: 18px 0
         margin: 0 18px
         font-size: 0
-        border-1px: (rgba(7, 17, 27, 0.1))
+        bottom-border-1px: (rgba(7, 17, 27, 0.1))
         // border-1px(rgba(7, 17, 27, 0.1))
         .block
           display: inline-block
@@ -239,9 +239,9 @@ export default {
         color: rgb(147, 153, 159)
         font-size: 0
         &.on
-          .icon-check_circle
+          .icon-check-circle
             color: $green
-        .icon-check_circle
+        .icon-check-circle
           display: inline-block
           vertical-align: top
           margin-right: 4px

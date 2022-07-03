@@ -1,8 +1,8 @@
 <template>
   <div class="shop-header">
     <nav class="shop-nav" :style="{backgroundImage: `url(${info.bgImg})`}">
-      <a class="back" @click="$router.back()">
-        <i class="iconfont icon-arrow_left"></i>
+      <a class="back" @click="$router.replace('/')">
+        <i class="iconfont icon-jiantou2"></i>
       </a>
     </nav>
 
@@ -160,10 +160,10 @@ export default {
         bottom 0
         background-color rgba(119, 103, 137, .43)
       .back
-        position: absolute 145
+        position: absolute
         top: 10px
         left: 0
-        .icon-arrow_left
+        .icon-jiantou2
           display: block
           padding: 5px
           font-size: 20px
@@ -286,7 +286,7 @@ export default {
             .mini-tag
               position absolute
               left 0
-              top 0 1
+              top 0
               right -100%
               bottom -100%
               font-size 18px
@@ -431,7 +431,7 @@ export default {
       left 0
       width 100%
       height 100%
-      z-index 99
+      z-index 98
       &.fade-enter-active, &.fade-leave-active
         transition opacity .3s
       &.fade-enter-active, &.fade-leave-active
